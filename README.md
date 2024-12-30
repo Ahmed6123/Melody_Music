@@ -1,38 +1,58 @@
-# 🎧 Welcome to PalmPlayer 🎧 
+# 🎵 Melody - Desktop Music Player
 
-Browse and play music on your desktop without WiFi!
+**Melody** is a modern desktop music player designed for music enthusiasts. Developed using C# and WPF (Windows Presentation Foundation), it features a sleek and customizable user interface, seamless audio playback, and powerful playlist management.
 
-[Click here to see the player in action!](https://youtu.be/HRxdCkUZAug)
-## Table of Contents
+## 🌟 Features
 
-- [Project Description](#project-description)
-- [Features](#features)
-- [Installation and Running for Visual Studio](#installation-and-running-for-visual-studio)
+- 🎧 **Seamless Audio Playback**: Supports popular audio formats like MP3 and WAV.
+- 📂 **Playlist Management**: Create, edit, and manage playlists effortlessly.
+- 📊 **Graphical Sound Visualizer**: Enjoy engaging and real-time visual effects.
+- 🎨 **Themed UI**: Customize your experience with a visually appealing design.
 
-## Project Description
+## 🛠️ Technologies Used
 
-PalmPlayer, or Palm for short, is a native desktop music player application for Windows, which allows users to store MP3/WAV files into a playlist or browse media from Youtube. The program is built using .NET WPF with C# and XAML. Media and playlist information stored in a rooted SQLite database and mapped via Microsoft Entity Framework. 
+- **Programming Language**: C#
+- **Framework**: WPF (Windows Presentation Foundation)
+- **Database**: SQLite for storing playlists and song metadata
+- **Architecture**: MVVM (Model-View-ViewModel)
 
-<img src="https://github.com/AarhamH/dotnet-media-player/assets/105332385/7cc11524-ba70-4923-8a94-9a2049b2dcdb" width="600" height="400" /> 
-<img src="https://github.com/AarhamH/dotnet-media-player/assets/105332385/2ef9f871-db8f-48ea-a042-2fde25c565ca" width="600" height="400" /> 
-<img src="https://github.com/AarhamH/dotnet-media-player/assets/105332385/9e9aef89-690e-4c68-936f-c9b14bd8b6ba" width="600" height="400" /> 
+## 📐 System Design
 
+- **Frontend**: Built with XAML, offering a minimalistic yet functional interface.
+- **Backend**: Powered by .NET, ensuring robust performance and maintainability.
+- **Modules**:
+  - Audio Playback
+  - Playlist Management
+  - Sound Visualizer
+  - UI Interactions
 
-## Features
-- Storage for 100+ songs 
-- High quality audio feedback
-- Create personalized playlists with naming and banner switching features
-- Audio navigation buttons (forward/backward) and volume and track sliders
-- Search bar in the browsing page which fetches results from Youtube based on user input
-- Beautiful UI
+## 📈 Results
 
-## Installation and Running for Visual Studio
-1. Install the latest version of Visual Studio and .NET Framework SDK
-2. Import the solution files into Visual Studio
-3. To try out the program, open a debug window in Visual Studio or run:
-```bash
-$ cd "where you kept the repo"
-$ MSBuild PalmPlayer.sln -restore /p:Configuration=Debug
-$ cd "where you kept repo"\PalmClient\bin\Debug\net7.0-windows
-$ PalmClient.exe
-```
+- Achieved seamless playback with intuitive controls.
+- Delivered a fully functional music player with enhanced user engagement.
+- Overcame challenges like handling diverse audio formats and implementing real-time visualizations.
+
+## 🚀 Future Enhancements
+
+- 🌐 **Online Streaming**: Support for streaming music online.
+- 🤖 **Recommendation Engine**: Personalized recommendations based on user preferences.
+- 🖥️ **Cross-Platform Compatibility**: Expand support to macOS and Linux.
+- 📥 **YouTube Integration**: Download audio and video directly from YouTube.
+
+## 🔗 Repository
+
+Find the complete source code and documentation on GitHub: [Melody - Music Player](https://github.com/kingzainab/Melody-MusicPlayer)
+
+## 📸 Screenshots
+
+> Showcase your UI screenshots here for a visual preview.
+
+## 💬 Feedback and Contributions
+
+We welcome contributions and feedback! Feel free to submit issues, fork the repository, and create pull requests.
+
+---
+
+**Developed by**: Ahmed Tasadduq, Ayesha Shamim, Zainab Asif  
+**Under the guidance of**: Ma’am Raheela Ambrin
+
