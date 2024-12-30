@@ -1,0 +1,303 @@
+﻿<UserControl x:Class="PalmClient.Views.PlaylistView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:ext="clr-namespace:PalmClient.Extensions"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100px" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <!-- Background with gradient -->
+        <Rectangle Grid.RowSpan="3">
+            <Rectangle.Fill>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                    <GradientStop Color="#0D000D" Offset="0"/>
+                    <GradientStop Color="#1A001A" Offset="0.5"/>
+                    <GradientStop Color="#260026" Offset="1"/>
+                </LinearGradientBrush>
+            </Rectangle.Fill>
+        </Rectangle>
+
+        <!-- Banner Section -->
+        <Border Grid.Row="0">
+            <Image Source="{Binding BannerUrl}" 
+                   Stretch="UniformToFill" 
+                   Opacity="0.3" 
+                   VerticalAlignment="Center" 
+                   RenderOptions.BitmapScalingMode="HighQuality"/>
+        </Border>
+
+        <!-- Playlist Title -->
+        <TextBox Grid.Row="0"
+                 Text="{Binding CurrentPlaylistName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                 ext:TextBoxPressEnterBehaviorExtension.EnterCommand="{Binding RenamePlaylist}"
+                 FontFamily="Segoe UI Light"
+                 FontSize="50"
+                 Margin="20,0"
+                 BorderThickness="0"
+                 Foreground="White"
+                 Background="Transparent"
+                 HorizontalAlignment="Left"
+                 VerticalAlignment="Center"
+                 FontWeight="Light">
+            <TextBox.Effect>
+                <DropShadowEffect ShadowDepth="2" 
+                                Color="Black" 
+                                Opacity="0.6" 
+                                BlurRadius="4"/>
+            </TextBox.Effect>
+        </TextBox>
+
+        <!-- Button Controls -->
+        <Border Grid.Row="1" 
+                Background="#13031A"
+                BorderBrush="#333333"
+                BorderThickness="0,1">
+            <StackPanel Orientation="Horizontal" 
+                        HorizontalAlignment="Center" 
+                        Margin="0,8">
+                <Button Content="Add Song +" 
+                        Width="100"
+                        Height="30"
+                        Margin="5,0"
+                        Command="{Binding ElementName=SongItems, Path=DataContext.AddSong}">
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border x:Name="border" 
+                                    CornerRadius="6" 
+                                    Background="#333333">
+                                <ContentPresenter HorizontalAlignment="Center" 
+                                                VerticalAlignment="Center"/>
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter TargetName="border" Property="Background" Value="#444444"/>
+                                </Trigger>
+                                <Trigger Property="IsPressed" Value="True">
+                                    <Setter TargetName="border" Property="Background" Value="#222222"/>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Button.Template>
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Setter Property="Foreground" Value="White"/>
+                            <Setter Property="FontSize" Value="13"/>
+                            <Setter Property="FontWeight" Value="SemiBold"/>
+                            <Setter Property="FontFamily" Value="Segoe UI"/>
+                        </Style>
+                    </Button.Style>
+                </Button>
+
+                <Button Content="View Downloads" 
+        Width="134" 
+        Height="30"
+        Margin="5,0"
+        Command="{Binding AddDownloadedSongsCommand}" Click="Button_Click_1">
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border x:Name="border" 
+                    CornerRadius="6" 
+                    Background="#333333">
+                                <ContentPresenter HorizontalAlignment="Center" 
+                                  VerticalAlignment="Center"/>
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter TargetName="border" Property="Background" Value="#444444"/>
+                                </Trigger>
+                                <Trigger Property="IsPressed" Value="True">
+                                    <Setter TargetName="border" Property="Background" Value="#222222"/>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Button.Template>
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Setter Property="Foreground" Value="White"/>
+                            <Setter Property="FontSize" Value="13"/>
+                            <Setter Property="FontWeight" Value="SemiBold"/>
+                            <Setter Property="FontFamily" Value="Segoe UI"/>
+                        </Style>
+                    </Button.Style>
+                </Button>
+
+                <Button Content="Change Banner" 
+                        Width="120"
+                        Height="30"
+                        Margin="5,0"
+                        Command="{Binding ChangeBanner}">
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border x:Name="border" 
+                                    CornerRadius="6" 
+                                    Background="#333333">
+                                <ContentPresenter HorizontalAlignment="Center" 
+                                                VerticalAlignment="Center"/>
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter TargetName="border" Property="Background" Value="#444444"/>
+                                </Trigger>
+                                <Trigger Property="IsPressed" Value="True">
+                                    <Setter TargetName="border" Property="Background" Value="#222222"/>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Button.Template>
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Setter Property="Foreground" Value="White"/>
+                            <Setter Property="FontSize" Value="13"/>
+                            <Setter Property="FontWeight" Value="SemiBold"/>
+                            <Setter Property="FontFamily" Value="Segoe UI"/>
+                        </Style>
+                    </Button.Style>
+                </Button>
+            </StackPanel>
+        </Border>
+
+        <!-- DataGrid -->
+        <DataGrid x:Name="SongItems"
+                  Grid.Row="2"
+                  ItemsSource="{Binding AllSongsOfPlaylist}"
+                  Background="Transparent"
+                  RowBackground="Transparent"
+                  AlternatingRowBackground="Transparent"
+                  BorderThickness="0"
+                  GridLinesVisibility="None"
+                  CanUserAddRows="False"
+                  CanUserResizeColumns="False"
+                  CanUserReorderColumns="False"
+                  CanUserResizeRows="False"
+                  CanUserDeleteRows="False"
+                  IsReadOnly="True"
+                  HeadersVisibility="Column"
+                  AutoGenerateColumns="False"
+                  VerticalScrollBarVisibility="Auto"
+                  HorizontalScrollBarVisibility="Disabled">
+
+            <DataGrid.Resources>
+                <Style TargetType="DataGridColumnHeader">
+                    <Setter Property="Background" Value="Transparent"/>
+                    <Setter Property="Foreground" Value="#BBBBBB"/>
+                    <Setter Property="FontWeight" Value="SemiBold"/>
+                    <Setter Property="FontSize" Value="14"/>
+                    <Setter Property="Padding" Value="10,8"/>
+                    <Setter Property="BorderThickness" Value="0"/>
+                </Style>
+            </DataGrid.Resources>
+
+            <DataGrid.Columns>
+                <DataGridTemplateColumn Width="50">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Style="{StaticResource TransparentButton}"
+                                    Command="{Binding ElementName=SongItems, Path=DataContext.PlaySong}"
+                                    CommandParameter="{Binding Id}">
+                                <Image Width="15" Height="15">
+                                    <Image.Style>
+                                        <Style TargetType="Image">
+                                            <Setter Property="Source" Value="../Icons/play.png"/>
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding Playing}" Value="True">
+                                                    <Setter Property="Source" Value="../Icons/pause.png"/>
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </Image.Style>
+                                </Image>
+                            </Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+                <DataGridTextColumn Header="#" 
+                                  Binding="{Binding Number}" 
+                                  Width="50"/>
+
+                <DataGridTextColumn Header="Song Title" 
+                                  Binding="{Binding Title}" 
+                                  Width="*">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="Foreground" Value="White"/>
+                            <Setter Property="VerticalAlignment" Value="Center"/>
+                            <Setter Property="Margin" Value="5"/>
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+
+                <DataGridTextColumn Header="Duration" 
+                                  Binding="{Binding Duration}" 
+                                  Width="300"/>
+
+                <DataGridTemplateColumn Width="50">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Style="{StaticResource TransparentButton}"
+                                    Command="{Binding ElementName=SongItems, Path=DataContext.DeleteSong}"
+                                    CommandParameter="{Binding Id}">
+                                <Image Source="../Icons/discard.png" 
+                                       Width="15" 
+                                       Height="15"/>
+                            </Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+
+            <DataGrid.RowStyle>
+                <Style TargetType="DataGridRow">
+                    <Setter Property="Background" Value="Transparent"/>
+                    <Setter Property="Foreground" Value="White"/>
+                    <Setter Property="Height" Value="40"/>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="#333333"/>
+                        </Trigger>
+                        <DataTrigger Binding="{Binding Playing}" Value="True">
+                            <Setter Property="Background" Value="#252525"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </DataGrid.RowStyle>
+        </DataGrid>
+
+        <!-- Loading/Empty State -->
+        <ContentControl Grid.Row="2" 
+                       HorizontalAlignment="Center" 
+                       VerticalAlignment="Center">
+            <ContentControl.Style>
+                <Style TargetType="ContentControl">
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding AllSongsOfPlaylist.Count}" Value="0">
+                            <Setter Property="Content">
+                                <Setter.Value>
+                                    <StackPanel>
+                                        <TextBlock Text="No songs found."
+                                                   FontSize="24"
+                                                   Foreground="#888888"
+                                                   HorizontalAlignment="Center"
+                                                   Margin="0,0,0,10"/>
+                                        <TextBlock Text="Use drag and drop to add some..."
+                                                   FontSize="16"
+                                                   Foreground="#666666"
+                                                   HorizontalAlignment="Center"/>
+                                    </StackPanel>
+                                </Setter.Value>
+                            </Setter>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </ContentControl.Style>
+        </ContentControl>
+    </Grid>
+</UserControl>
