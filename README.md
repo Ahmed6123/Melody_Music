@@ -41,7 +41,7 @@
 
 ## 🔗 Repository
 
-Find the complete source code and documentation on GitHub: [Melody - Music Player](https://github.com/kingzainab/Melody-MusicPlayer)
+Find the complete source code and documentation on GitHub: [Melody - Music Player](https://github.com/Ahmed6123/Melody_Music)
 
 ## 📸 Screenshots
 
