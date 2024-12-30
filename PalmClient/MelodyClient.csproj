@@ -53,7 +53,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\PalmData\PalmData.csproj" />
+    <ProjectReference Include="..\PalmData\MelodyData.csproj" />
   </ItemGroup>
 
   <ItemGroup>
